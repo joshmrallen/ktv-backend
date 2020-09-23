@@ -197,7 +197,7 @@ DEPENDENCIES
   bootsnap (>= 1.4.2)
   byebug
   dotenv
-  google-api-client (> 0.7)
+  google-api-client (> 0.8)
   listen (~> 3.2)
   pg (>= 0.18, < 2.0)
   pry
