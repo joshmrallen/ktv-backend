@@ -1,10 +1,7 @@
 require 'pry'
 require 'dotenv'
 Dotenv.load
-require 'google/apis'
-require 'google/apis/youtube_v3'
-require 'googleauth'
-require 'googleauth/stores/file_token_store'
+
 require 'rest-client'
 
 
@@ -12,7 +9,14 @@ require 'rest-client'
 puts "johnny appleseed"
 
 
+# def search (query)
+#     key = ENV['API_KEY']
+#     response = RestClient.get("https://www.googleapis.com/youtube/v3/search?maxResults=10&q=#{query}h&key=#{key}")
+#     result = JSON.parse(response.body)
+# end
 
+# testdata = search("spider")
+# binding.pry
 
 abc = Video.search("spider")
 
