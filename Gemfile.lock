@@ -192,7 +192,6 @@ GEM
       sprockets (>= 3.0.0)
     thor (1.0.1)
     thread_safe (0.3.6)
-    trollop (2.9.10)
     tzinfo (1.2.7)
       thread_safe (~> 0.1)
     uber (0.1.0)
@@ -220,7 +219,6 @@ DEPENDENCIES
   rest-client
   spring
   spring-watcher-listen (~> 2.0.0)
-  trollop
   tzinfo-data
 
 RUBY VERSION
