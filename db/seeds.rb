@@ -1,22 +1,26 @@
 require 'pry'
 require 'dotenv'
-Dotenv.load
-require 'google/apis'
-require 'google/apis/youtube_v3'
-require 'googleauth'
-require 'googleauth/stores/file_token_store'
 require 'rest-client'
+
+Dotenv.load
 
 
 
 puts "johnny appleseed"
 
+# abc = Video.search("spider")
 
+search = Search.new(query: "spider")
+raw_results = Search.request(search.query)
+array = raw_results["items"].select{|result| result["id"]["videoId"]}
+video_ids = array.map{|result| result["id"]["videoId"]}
 
+search.results = video_ids.join(', ')
 
-abc = Video.search("spider")
+search.save!
 
 binding.pry
 
 puts "complete"
+
 
