@@ -9,11 +9,10 @@ class SearchesController < ApplicationController
         search = Search.new(search_params)
         # binding.pry
         raw_results = Search.request(search.query)
-        array = raw_results["items"].select{|result| result["id"]["videoId"]}
-        video_ids = array.map{|result| result["id"]["videoId"]}
 
-        search.results = video_ids.join(', ')
-        
+        # yalltube_links=video_ids.map{|name|"https://www.youtube.com/watch?v=#{name}"}
+        search.results = video_ids
+        # search.results = yalltube_links
         search.save!
 
         render json: search

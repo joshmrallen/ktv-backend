@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(version: 2020_09_24_170818) do
 
   create_table "searches", force: :cascade do |t|
     t.string "query"
-    t.string "results"
+    t.json "results"
   end
 
   create_table "users", force: :cascade do |t|
