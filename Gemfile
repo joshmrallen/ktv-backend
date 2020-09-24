@@ -48,4 +48,5 @@ gem 'pry'
   
 gem 'dotenv'
 
+gem 'rest-client'
 # gem 'rubygems' wtf?
