@@ -8,11 +8,12 @@ class SearchesController < ApplicationController
     def create
         search = Search.new(search_params)
         # binding.pry
-        raw_results = Search.request(search.query)
+        result_object = Search.request(search.query)
+        search.results = result_object
 
         # yalltube_links=video_ids.map{|name|"https://www.youtube.com/watch?v=#{name}"}
-        search.results = video_ids
         # search.results = yalltube_links
+        
         search.save!
 
         render json: search
