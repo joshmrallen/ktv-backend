@@ -3,7 +3,23 @@ Dotenv.load
 
 class Search < ApplicationRecord
 
-    def self.request(query, previous_page=nil, next_page=nil)
+    def self.request(query, results)
+        binding.pry
+        key = ENV['API_KEY']
+        url = "https://www.googleapis.com/youtube/v3/search?maxResults=10&q=#{query}&type=video&key=#{key}"
+        url = "https://www.googleapis.com/youtube/v3/search?maxResults=10&&pageToken=#{results}&q=#{Search.all.last.query}&type=video&key=#{key}" if results != ""
+        #url changes when we get a token, token that we get is based on the button pused. only one token will 
+        #be sent from the front end and hence there should not be a conflict 
+        response = RestClient.get(url)
+        raw_results = JSON.parse(response.body)
+        array = raw_results["items"].select{|result| result["id"]["videoId"]}
+        video_ids = array.map{|result| result["id"]["videoId"]}
+        raw_results["nextPageToken"] ? next_token = raw_results["nextPageToken"] : next_token = false
+        raw_results["prevPageToken"] ? prev_token = raw_results["prevPageToken"] : prev_token = false
+        return video_ids, next_token, prev_token
+    end
+
+    def self.request2(query, previous_page=nil, next_page=nil)
         result_object={
             videos: "",
             current_page_token: "",
@@ -35,6 +51,7 @@ class Search < ApplicationRecord
         end 
         result_object.to_json
     end
+
 
     def api_call(query, token)
         key = ENV['API_KEY']
