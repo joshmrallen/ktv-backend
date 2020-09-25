@@ -4,10 +4,10 @@ Dotenv.load
 class Search < ApplicationRecord
 
     def self.request(query, results)
-        binding.pry
+        # binding.pry
         key = ENV['API_KEY']
         url = "https://www.googleapis.com/youtube/v3/search?maxResults=10&q=#{query}&type=video&key=#{key}"
-        url = "https://www.googleapis.com/youtube/v3/search?maxResults=10&&pageToken=#{results}&q=#{Search.all.last.query}&type=video&key=#{key}" if results != ""
+        url = "https://www.googleapis.com/youtube/v3/search?maxResults=10&&pageToken=#{results}&q=#{query}&type=video&key=#{key}" if results != ""
         #url changes when we get a token, token that we get is based on the button pused. only one token will 
         #be sent from the front end and hence there should not be a conflict 
         response = RestClient.get(url)

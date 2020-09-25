@@ -6,6 +6,7 @@ class SearchesController < ApplicationController
     end
 
     def create
+        # binding.pry
         search = Search.new(search_params)
         # binding.pry
         # yalltube_links=video_ids.map{|name|"https://www.youtube.com/watch?v=#{name}"}
@@ -13,9 +14,9 @@ class SearchesController < ApplicationController
         # binding.pry
 
         search.save!
-        cats={search:search,token:next_token,prev:prev_token}
+        resultsObj={search: search, next_token: next_token, prev_token: prev_token}
         # binding.pry
-        render json: cats
+        render json: resultsObj
     end
 
     private
