@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :favorites
   # post '/search', to: 'search#search_handler'
   # get '/results', to: 'search#index'
   resources :searches

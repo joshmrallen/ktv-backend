@@ -1,4 +1,9 @@
 class Video < ApplicationRecord
+has_many :favorites
+has_many :users, through: :favorites
+
+validates :url, uniqueness: true
+
 
     def self.search (query)
         key = ENV['API_KEY']
