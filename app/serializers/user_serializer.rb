@@ -1,3 +1,10 @@
 class UserSerializer < ActiveModel::Serializer
   attributes :name, :email
+
+  has_many :favorites
+  has_many :videos, through: :favorites
+
+  has_many :rooms
+  has_many :videos, through: :rooms
+
 end

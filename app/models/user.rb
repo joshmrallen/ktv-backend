@@ -4,6 +4,9 @@ class User < ApplicationRecord
     has_many :favorites
     has_many :videos, through: :favorites
 
+    has_many :rooms
+    has_many :videos, through: :rooms
+
     validates :name, presence: true
     validates :email, uniqueness: true 
 

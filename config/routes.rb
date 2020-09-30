@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :rooms
   resources :users, only: [:index, :show, :create]
   #Login route
   post '/login', to: 'auth#create'

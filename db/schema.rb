@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_29_202256) do
+ActiveRecord::Schema.define(version: 2020_09_30_204638) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -18,6 +18,13 @@ ActiveRecord::Schema.define(version: 2020_09_29_202256) do
   create_table "favorites", force: :cascade do |t|
     t.integer "video_id"
     t.integer "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "rooms", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "video_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -36,11 +43,13 @@ ActiveRecord::Schema.define(version: 2020_09_29_202256) do
   end
 
   create_table "videos", force: :cascade do |t|
-    t.string "name"
     t.string "lyrics"
-    t.string "url"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "title"
+    t.string "youTubeId"
+    t.string "description"
+    t.boolean "captions"
   end
 
 end
