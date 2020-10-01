@@ -1,4 +1,5 @@
 class SearchesController < ApplicationController
+    skip_before_action :authorized, only: [:create]
 
     def index
         queries = Search.all

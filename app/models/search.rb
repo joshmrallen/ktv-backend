@@ -8,8 +8,8 @@ class Search < ApplicationRecord
         key = ENV['API_KEY']
         url = "https://www.googleapis.com/youtube/v3/search?maxResults=10&q=#{query}&type=video&key=#{key}"
         url = "https://www.googleapis.com/youtube/v3/search?maxResults=10&&pageToken=#{results}&q=#{query}&type=video&key=#{key}" if results != ""
-        #url changes when we get a token, token that we get is based on the button pused. only one token will 
-        #be sent from the front end and hence there should not be a conflict 
+        # url changes when we get a token, token that we get is based on the button pused. only one token will 
+        # be sent from the front end and hence there should not be a conflict 
         response = RestClient.get(url)
         raw_results = JSON.parse(response.body)
         array = raw_results["items"].select{|result| result["id"]["videoId"]}
