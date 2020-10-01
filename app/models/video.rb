@@ -7,6 +7,7 @@ class Video < ApplicationRecord
     has_many :rooms
     has_many :users, through: :rooms
 
+    validates :youTubeId, uniqueness: true 
 
     def self.search (query)
         key = ENV['API_KEY']

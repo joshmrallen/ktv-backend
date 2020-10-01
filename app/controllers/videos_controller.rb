@@ -1,2 +1,3 @@
 class VideosController < ApplicationController
+    
 end

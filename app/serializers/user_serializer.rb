@@ -4,7 +4,7 @@ class UserSerializer < ActiveModel::Serializer
   has_many :favorites
   has_many :videos, through: :favorites
 
-  has_many :rooms
-  has_many :videos, through: :rooms
+  # has_many :rooms
+  # has_many :videos, through: :rooms
 
 end
