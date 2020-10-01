@@ -20,7 +20,7 @@ class Video < ApplicationRecord
         # binding.pry
         response = RestClient.get("https://www.googleapis.com/youtube/v3/videos?part=contentDetails&part=snippet&id=#{self.youTubeId}&key=#{key}")
         result = JSON.parse(response.body)
-        # binding.pry
+        binding.pry
         self.title = result["items"][0]["snippet"]["title"]
         self.captions = result["items"][0]["contentDetails"]["caption"]
         self.description = result["items"][0]["snippet"]["description"]

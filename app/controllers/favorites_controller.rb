@@ -5,7 +5,7 @@ class FavoritesController < ApplicationController
         # binding.pry
         user = User.find_by(email:params["user_id"]["email"])
         user_id=user.id
-        video = Video.new(youTubeId:params["video_id"])
+        video = Video.create_or_find_by(youTubeId: params["video_id"])
         video.get_video_details
         video.save!
         video_id=video.id
