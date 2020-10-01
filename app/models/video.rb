@@ -26,16 +26,16 @@ class Video < ApplicationRecord
         self.description = result["items"][0]["snippet"]["description"]
     end
 
-    def get_lyrics
-        key = ENV['CAPTION_KEY']
-        response = RestClient.get("https://www.googleapis.com/youtube/v3/captions?part=snippet,id&videoId=#{self.youTubeId}&key=#{key}")
+    def get_lyrics(song)
+        response = RestClient.get("https://api.canarado.xyz/lyrics/#{song}")
         result = JSON.parse(response.body)
-        # binding.pry
-        #consider using nokogiri gem for the following scraping method that works in js:
-        # let spans = document.querySelectorAll(`[jsname="YS01Ge"]`)
-        # for(let line of spans){
-#            console.log(line.innerText)
-#         }
+        title_line = result["content"][0]["title"]
+        title = title_line.split(' by')[0].tr(" ","-")
+        artist_line = result["content"][0]["artist"]
+        artist=artist_line.tr(" ","-")
+        response_search = RestClient.get("https://api.lyrics.ovh/v1/#{artist}/#{title}")
+        result_search = JSON.parse(response_search.body)
+        result_search["lyrics"]
     end
 
     def self.find_create_or_populate(youTubeId)

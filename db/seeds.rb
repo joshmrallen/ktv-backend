@@ -17,7 +17,11 @@ puts "johnny appleseed"
 
 # fav = Favorite.create(video_id: 1, user_id: 1)
 
-# binding.pry
+
+
+
+binding.pry
+song = get_lyrics("muse-startlight")
 
 
 puts User.count
