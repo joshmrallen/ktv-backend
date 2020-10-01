@@ -54,3 +54,8 @@ gem 'jwt'
 gem 'active_model_serializers'
 
 gem 'faker'
+
+gem 'uri', '~> 0.10.0'
+gem 'rubysl-net-http', '~> 2.0', '>= 2.0.4'
+gem 'openssl', '~> 2.2'
+

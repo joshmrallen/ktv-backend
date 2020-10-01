@@ -110,6 +110,7 @@ GEM
     nio4r (2.5.4)
     nokogiri (1.10.10)
       mini_portile2 (~> 2.4.0)
+    openssl (2.2.0)
     pg (1.2.3)
     pry (0.13.1)
       coderay (~> 1.1)
@@ -156,6 +157,13 @@ GEM
       http-cookie (>= 1.0.2, < 2.0)
       mime-types (>= 1.16, < 4.0)
       netrc (~> 0.8)
+    rubysl-cgi (2.0.1)
+    rubysl-erb (2.0.2)
+    rubysl-net-http (2.0.4)
+      rubysl-cgi (~> 2.0)
+      rubysl-erb (~> 2.0)
+      rubysl-singleton (~> 2.0)
+    rubysl-singleton (2.0.0)
     spring (2.1.1)
     spring-watcher-listen (2.0.1)
       listen (>= 2.7, < 4.0)
@@ -174,6 +182,7 @@ GEM
     unf (0.1.4)
       unf_ext
     unf_ext (0.0.7.7)
+    uri (0.10.0)
     websocket-driver (0.7.3)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
@@ -191,15 +200,18 @@ DEPENDENCIES
   faker
   jwt
   listen (~> 3.2)
+  openssl (~> 2.2)
   pg (>= 0.18, < 2.0)
   pry
   puma (~> 4.1)
   rack-cors
   rails (~> 6.0.3, >= 6.0.3.2)
   rest-client
+  rubysl-net-http (~> 2.0, >= 2.0.4)
   spring
   spring-watcher-listen (~> 2.0.0)
   tzinfo-data
+  uri (~> 0.10.0)
 
 RUBY VERSION
    ruby 2.6.1p33
