@@ -24,6 +24,7 @@ class Video < ApplicationRecord
         self.title = result["items"][0]["snippet"]["title"]
         self.captions = result["items"][0]["contentDetails"]["caption"]
         self.description = result["items"][0]["snippet"]["description"]
+        self.lyrics=get_lyrics(self.title)
     end
 
     def get_lyrics(song)
