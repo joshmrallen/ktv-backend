@@ -20,6 +20,7 @@ class UsersController < ApplicationController
     end
 
     def create
+        # binding.pry
         @user = User.create!(user_params)
         if @user.valid?
             @token = encode_token(user_id: @user.id)
