@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   post '/login', to: 'auth#create'
   #Retrieve user info to stay logged in -- verfy JWT token
   get '/profile', to: 'users#profile'
+  #delete a favorite
+  post '/favorites/delete', to: 'favorites#destroy'
 
   resources :favorites
   # post '/search', to: 'search#search_handler'
