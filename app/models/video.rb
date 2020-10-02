@@ -20,14 +20,22 @@ class Video < ApplicationRecord
         # binding.pry
         response = RestClient.get("https://www.googleapis.com/youtube/v3/videos?part=contentDetails&part=snippet&id=#{self.youTubeId}&key=#{key}")
         result = JSON.parse(response.body)
-        binding.pry
+        # binding.pry
         self.title = result["items"][0]["snippet"]["title"]
         self.captions = result["items"][0]["contentDetails"]["caption"]
         self.description = result["items"][0]["snippet"]["description"]
-        self.get_lyrics(self.title)
+        self.save!
+        self.lyrics=get_lyrics(self.title)
+        self.save!
     end
 
     def get_lyrics(song)
+        # binding.pry
+        # song=self.title
+        song=song.split(" feat.")[0]
+        song=song.split(" ft")[0]
+        song=song.split(" (")[0]
+        song=song.tr(" ","-")
         response = RestClient.get("https://api.canarado.xyz/lyrics/#{song}")
         result = JSON.parse(response.body)
         title_line = result["content"][0]["title"]
@@ -39,22 +47,15 @@ class Video < ApplicationRecord
         self.lyrics = result_search["lyrics"]
     end
 
-    def self.find_create_or_populate(youTubeId)
-        binding.pry
-        video = Video.create_or_find_by(youTubeId: youTubeId)
-        
-        if video.title != nil
-            id = video.id
-        else
-            #api call here to fill ut video attrs
-            video.get_video_details()
-            #get lyrics and save to the new video record
-            if !video.captions
-
-            end
+    def join_nested_strings(src)
+        joint=[]
+        src.each do|subora|
+          subora.each do|element|
+            joint<<element if element.kind_of? String
+          end
         end
-        id
-    end
+        p joint.join(" ")
+      end
       
 end
 

@@ -11,17 +11,23 @@ puts "johnny appleseed"
 # users=users.split(",")
 # users.each{|u|User.create(name:u, email:"#{u}@flat.com")}
 
-# videos="x3bDhtuC5yk,caITRQWpBHs"
-# videos=videos.split(",")
-# videos.each{|v|Video.create(name:"song", lyrics:"none",url:v)}
 
+video = Video.new(youTubeId: "caITRQWpBHs")
+video2 = Video.new(youTubeId: "x3bDhtuC5yk")
+video.get_video_details
+video2.get_video_details
+x=video.description
+y=video2.description
+video.lyrics=x
+video2.lyrics=y
+video.save!
+video2.save!
 # fav = Favorite.create(video_id: 1, user_id: 1)
 
 
 
 
 binding.pry
-song = get_lyrics("muse-startlight")
 
 
 puts User.count

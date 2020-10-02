@@ -12,12 +12,13 @@ class VideosController < ApplicationController
     end
 
     def create
-        video = Video.create_or_find_by(youTubeId: video_params)
-        if(video.lyrics == nil)
+        already_in_system = Video.find_by(youTubeId: video_params[:youTubeId])
+        if !!already_in_system == false
+            video = Video.new(youTubeId: video_params[:youTubeId])
             video.get_video_details
             render json: video
         else
-            render json: video
+            render json: already_in_system
         end
     end
 
