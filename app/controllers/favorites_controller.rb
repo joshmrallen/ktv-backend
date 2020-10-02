@@ -13,7 +13,7 @@ class FavoritesController < ApplicationController
             
             # binding.pry
             
-            video = Video.new(youTubeId: video_params[:youTubeId])
+            video = Video.new(youTubeId: params["video_id"])
             video.get_video_details
             Favorite.create!(user_id:user_id,video_id:video.id)
             render json: user
