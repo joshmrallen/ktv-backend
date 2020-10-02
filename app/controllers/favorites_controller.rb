@@ -16,7 +16,7 @@ class FavoritesController < ApplicationController
             video = Video.new(youTubeId: params["video_id"])
             video.get_video_details
             Favorite.create!(user_id:user_id,video_id:video.id)
-            render json: user
+            render json: video
         end
     end
 
