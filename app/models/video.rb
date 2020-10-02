@@ -24,7 +24,7 @@ class Video < ApplicationRecord
         self.title = result["items"][0]["snippet"]["title"]
         self.captions = result["items"][0]["contentDetails"]["caption"]
         self.description = result["items"][0]["snippet"]["description"]
-        self.lyrics=get_lyrics(self.title)
+        self.get_lyrics(self.title)
     end
 
     def get_lyrics(song)
@@ -36,7 +36,7 @@ class Video < ApplicationRecord
         artist=artist_line.tr(" ","-")
         response_search = RestClient.get("https://api.lyrics.ovh/v1/#{artist}/#{title}")
         result_search = JSON.parse(response_search.body)
-        result_search["lyrics"]
+        self.lyrics = result_search["lyrics"]
     end
 
     def self.find_create_or_populate(youTubeId)

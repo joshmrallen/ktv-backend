@@ -13,8 +13,12 @@ class VideosController < ApplicationController
 
     def create
         video = Video.create_or_find_by(youTubeId: video_params)
-        video.get_video_details
-        render json: video
+        if(video.lyrics == nil)
+            video.get_video_details
+            render json: video
+        else
+            render json: video
+        end
     end
 
     private
