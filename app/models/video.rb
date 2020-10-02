@@ -24,14 +24,18 @@ class Video < ApplicationRecord
         self.title = result["items"][0]["snippet"]["title"]
         self.captions = result["items"][0]["contentDetails"]["caption"]
         self.description = result["items"][0]["snippet"]["description"]
+        self.save!
         self.lyrics=get_lyrics(self.title)
         self.save!
     end
 
     def get_lyrics(song)
         # binding.pry
-        #song=self.title
-        song=song.split(" feat.")[0].tr(" ","-")
+        # song=self.title
+        song=song.split(" feat.")[0]
+        song=song.split(" ft")[0]
+        song=song.split(" (")[0]
+        song=song.tr(" ","-")
         response = RestClient.get("https://api.canarado.xyz/lyrics/#{song}")
         result = JSON.parse(response.body)
         title_line = result["content"][0]["title"]

@@ -7,14 +7,11 @@ class FavoritesController < ApplicationController
         user_id=user.id
         already_in_system = Video.find_by(youTubeId: params["video_id"])
         if already_in_system 
-            
-            binding.pry
-            
             Favorite.create!(user_id:user_id,video_id:already_in_system.id)
             render json: user
         else
             
-            binding.pry
+            # binding.pry
             
             video = Video.new(youTubeId: video_params[:youTubeId])
             video.get_video_details
