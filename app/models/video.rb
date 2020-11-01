@@ -30,7 +30,7 @@ class Video < ApplicationRecord
     end
 
     def get_lyrics(song)
-        # binding.pry
+        binding.pry
         # song=self.title
         song=song.split(" feat.")[0]
         song=song.split(" ft")[0]
