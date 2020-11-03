@@ -1,4 +1,4 @@
-![gif](./demo.gif)
+![gif](./demo.gif?raw=true)
 
 # Wu KTV
 # Description
@@ -23,6 +23,9 @@ YouTube /search and /video API's
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+# Challenges
+There are a good number of API's for song lyrics; however, many of them are fairly limited in their offering. The Challenge was to find one robust enough to return song lyrics for a majority of videos on YouTube. We were able to find an API that provided a feature that allowed us standardize the Song Title we obtained from the YouTube video title, which we then fed to another, more robust API for accurate lyrics.
+
 # Backstory
 Both collaborators have experience singing in Karaoke places abroad in China. The main different between Karaoke in East Asia and the US is the private room you get with your friends.
 
@@ -30,24 +33,15 @@ In addition, the music selection abroad is much more up to date on the latest po
 
 Assuming it's a copyright issue, we decided to make our version of the Karaoke experience where we could get the songs we enjoy and match them with their lyrics so that they're in one place for us to sing and enjoy in front of our friends and family.
 
----
-
-# GitHub repos:
-Frontend: https://github.com/joshmrallen/ktv-frontend
-
-Backend: https://github.com/joshmrallen/ktv-backend
-
----
-
-
-
----
-
 
 # How to Contribute
 Reach out to us about collaborating!
 
-# Features Not Yet Implemented:
+---
+---
+
+
+# Future Implementation
 ## Grading Feature:
 * use webAudio api/library
     * https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API
