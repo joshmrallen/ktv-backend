@@ -1,5 +1,7 @@
 ![gif](./demo.gif?raw=true)
 
+[See the full demo here!](https://youtu.be/ocYz4YZop-k)
+
 # Wu KTV
 # Description
 Tired of not being able to easily get lyrics to music videos on youtube? This app ties together multiple API's so that you can learn your favorite songs easily while you enjoy them at the same time.
